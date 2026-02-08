@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Tường: An Toàn Không Gian Số</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .bg-cyber { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="font-bold text-xl text-blue-700">Digital Safety 2026</h1>
+            <ul class="flex space-x-6 text-gray-600 font-medium">
+                <li><a href="index.html" class="hover:text-blue-600">Trang chủ</a></li>
+                <li><a href="habits.html" class="hover:text-blue-600">Thói quen</a></li>
+                <li><a href="risks.html" class="hover:text-blue-600">Nguy cơ</a></li>
+                <li><a href="solutions.html" class="hover:text-blue-600">Cách xử lý</a></li>
+            </ul>
+           
+        </div>
+    </nav>
+
+    <div id="chatbox" class="fixed bottom-0 right-5 w-80 bg-white shadow-2xl rounded-t-xl border border-gray-200 transition-all duration-300 transform translate-y-[260px]">
+    <div onclick="toggleChat()" class="bg-blue-600 text-white p-3 rounded-t-xl font-bold cursor-pointer flex justify-between items-center shadow-lg">
+        <span>💬 Hộp Góp Ý</span>
+        <span id="chat-icon">▲</span>
+    </div>
+    
+    <div class="p-4 bg-white h-[260px]">
+        <label class="block text-xs font-semibold text-gray-500 mb-1">HỌ VÀ TÊN</label>
+        <input type="text" id="user-name" placeholder="Nhập tên của bạn..." 
+               class="w-full border border-gray-300 p-2 mb-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        
+        <label class="block text-xs font-semibold text-gray-500 mb-1">Ý KIẾN ĐÓNG GÓP</label>
+        <textarea id="user-comment" placeholder="Chúng tôi có thể cải thiện điều gì?" 
+                  class="w-full border border-gray-300 p-2 mb-3 rounded-lg text-sm h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        
+        <button onclick="sendFeedback()" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 shadow-md">
+            Gửi góp ý
+        </button>
+    </div>
+</div>
+
+<script>
+    let isChatOpen = false;
+
+    function toggleChat() {
+        const chatbox = document.getElementById('chatbox');
+        const icon = document.getElementById('chat-icon');
+        
+        if (isChatOpen) {
+            // Đóng chatbox (Đẩy xuống dưới)
+            chatbox.style.transform = "translate-y(260px)"; // Tailwind class tương ứng: translate-y-[260px]
+            chatbox.classList.add('translate-y-[260px]');
+            icon.innerText = "▲";
+        } else {
+            // Mở chatbox (Kéo lên trên)
+            chatbox.classList.remove('translate-y-[260px]');
+            chatbox.style.transform = "translate-y(0)";
+            icon.innerText = "▼";
+        }
+        isChatOpen = !isChatOpen;
+    }
+
+    function sendFeedback() {
+        const name = document.getElementById('user-name').value;
+        const comment = document.getElementById('user-comment').value;
+
+        if (name && comment) {
+            alert("Cảm ơn " + name + "! Ý kiến của bạn đã được gửi đi.");
+            // Xóa dữ liệu cũ sau khi gửi
+            document.getElementById('user-name').value = "";
+            document.getElementById('user-comment').value = "";
+            toggleChat(); // Tự động đóng sau khi gửi
+        } else {
+            alert("Vui lòng điền đầy đủ thông tin!");
+        }
+    }
+</script>
+</body>
+<section class="max-w-6xl mx-auto py-12 px-4">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-blue-800 mb-4">CẨM NANG XỬ LÝ SỰ CỐ MẠNG</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Bình tĩnh là yếu tố quan trọng nhất. Hãy thực hiện theo các bước hướng dẫn dưới đây khi bạn gặp phải các tình huống mất an toàn số.</p>
+    </div>
+
+    <div class="space-y-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-orange-500">
+            <h3 class="font-bold text-xl text-orange-700 mb-2">Tình huống 1: Nghi ngờ tài khoản mạng xã hội bị xâm nhập</h3>
+            <p class="text-gray-700 mb-3"><strong>Dấu hiệu:</strong> Có tin nhắn lạ gửi đi cho bạn bè, hoặc nhận thông báo đăng nhập từ thiết bị không xác định.</p>
+            <div class="bg-orange-50 p-4 rounded-lg">
+                <p class="font-semibold text-orange-800 underline">Cách xử lý:</p>
+                <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1">
+                    <li>Sử dụng tính năng "Quên mật khẩu" để lấy lại quyền truy cập ngay lập tức.</li>
+                    <li>Chọn "Đăng xuất khỏi tất cả các thiết bị khác".</li>
+                    <li>Kích hoạt bảo mật 2 lớp (2FA) qua ứng dụng xác thực hoặc tin nhắn SMS.</li>
+                    <li>Thông báo cho bạn bè trên tường cá nhân để họ không chuyển tiền theo yêu cầu của kẻ xấu.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-blue-500">
+            <h3 class="font-bold text-xl text-blue-700 mb-2">Tình huống 2: Lỡ nhấn vào đường link lạ hoặc tải file nghi vấn</h3>
+            <p class="text-gray-700 mb-3"><strong>Dấu hiệu:</strong> Máy tính/điện thoại chạy chậm bất thường, hiện quảng cáo liên tục hoặc tự động cài ứng dụng lạ.</p>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="font-semibold text-blue-800 underline">Cách xử lý:</p>
+                <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1">
+                    <li>Ngắt kết nối Wi-Fi/Dữ liệu di động ngay lập tức để ngăn mã độc gửi dữ liệu ra ngoài.</li>
+                    <li>Dùng phần mềm diệt virus quét toàn bộ hệ thống.</li>
+                    <li>Sao lưu dữ liệu quan trọng và thực hiện khôi phục cài đặt gốc nếu cần thiết.</li>
+                    <li>Thay đổi mật khẩu các tài khoản quan trọng (Ngân hàng, Email) trên một thiết bị sạch khác.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-red-500">
+            <h3 class="font-bold text-xl text-red-700 mb-2">Tình huống 3: Bị đe dọa, tống tiền bằng hình ảnh/thông tin nhạy cảm</h3>
+            <p class="text-gray-700 mb-3"><strong>Dấu hiệu:</strong> Kẻ xấu yêu cầu chuyển tiền hoặc thực hiện hành vi sai trái để đổi lấy việc không phát tán thông tin.</p>
+            <div class="bg-red-50 p-4 rounded-lg">
+                <p class="font-semibold text-red-800 underline">Cách xử lý:</p>
+                <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1">
+                    <li>Ngừng mọi liên lạc với kẻ đe dọa (không tranh cãi, không chuyển tiền).</li>
+                    <li>Chụp màn hình tất cả tin nhắn và bằng chứng đe dọa.</li>
+                    <li>Thiết lập quyền riêng tư tối đa cho tài khoản mạng xã hội.</li>
+                    <li>Trình báo ngay với cơ quan Công an gần nhất hoặc gọi đường dây nóng.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-16">
+        <div class="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-t-xl flex justify-between items-center">
+            <h3 class="font-bold text-yellow-800 flex items-center">
+                <span class="mr-2">⚠️</span> CẢNH BÁO: WEBSITE GIẢ MẠO DỊCH VỤ CÔNG
+            </h3>
+            <a href="https://nhandan.vn/canh-giac-with-website-gia-mao-dich-vu-cong-post940090.html" target="_blank" class="text-sm bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Mở trang gốc</a>
+        </div>
+        <div class="overflow-hidden rounded-b-xl border-x-2 border-b-2 border-yellow-400 bg-white">
+            <iframe 
+                src="https://nhandan.vn/canh-giac-voi-website-gia-mao-dich-vu-cong-post940090.html" 
+                class="w-full h-[600px] border-none"
+                title="Cảnh giác với website giả mạo dịch vụ công">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="mt-16 py-8 border-t border-gray-200 text-center">
+        <p class="text-gray-500 mb-6 font-medium">Bạn cần hỗ trợ khẩn cấp? Hãy liên hệ trực tiếp với cơ quan chức năng:</p>
+        <div class="flex justify-center gap-4">
+            <a href="https://bocongan.gov.vn" target="_blank" 
+               class="bg-red-600 text-white font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-red-700 transform hover:-translate-y-1 transition-all">
+               CỔNG THÔNG TIN BỘ CÔNG AN
+            </a>
+            
+        </div>
+    </div>
+</section>
